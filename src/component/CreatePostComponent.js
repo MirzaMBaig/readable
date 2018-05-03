@@ -15,8 +15,20 @@ class CreatePostComponent extends Component {
         "category": 'react',
     }
 
+    componentDidMount(){
+
+        let post = this.props.post.state.post;
+        this.setState({
+            id:post.id,
+            title:post.title,
+            "timestamp": Date.now(),
+            body:post.body,
+            author:post.author,
+            category:post.category,
+        })
+    }
+
     handleTitleChange(title) {
-        console.log(title);
         this.setState({title})
     }
 
@@ -29,12 +41,10 @@ class CreatePostComponent extends Component {
     }
 
     handlePostChange(body) {
-        console.log(this.state.title);
         this.setState({body})
-        console.log(this.state.body);
     }
 
-    savePost111(event) {
+    savePost(event) {
         console.log("this is title " + this.state.title + typeof this.state.title);
         console.log(this.state);
         event.preventDefault();
@@ -95,7 +105,7 @@ class CreatePostComponent extends Component {
                                 </div>
                                 <div class="form-group ml-auto">
                                     <button type="button" class="btn btn-success ml-auto"
-                                            onClick={(event) => this.savePost111(event)}>Create
+                                            onClick={(event) => this.savePost(event)}>Create
                                     </button>
                                 </div>
                             </form>

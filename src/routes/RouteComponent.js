@@ -17,6 +17,9 @@ class RouteComponent extends Component {
                 <Route exact path={`/posts/:id`}
                        render={(props) => (<PostDetailComponent pageProps={props}/> )}/>
 
+                <Route exact path={`/post/edit`}
+                       render={(props) => (<CreatePostComponent post={props.location}/> )}/>
+
                 <Route exact path={`/post/create`}
                        render={(props) => (<CreatePostComponent/> )}/>
             </div>
