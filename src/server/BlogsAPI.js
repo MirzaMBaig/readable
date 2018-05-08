@@ -63,10 +63,10 @@ export const search = (query) =>
   }).then(res => res.json())
     .then(data => data.books)
 
-export const saveComment = (comment) => {
+export const saveOrUpdateComment = (comment) => {
     console.log(comment);
     return fetch(`${api}/comments`, {
-        method: 'POST',
+        method: comment.isEditing?'PUT':'POST',
         headers: {
             ...headers,
             'Content-Type': 'application/json'

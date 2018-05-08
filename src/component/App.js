@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
-import './App.css';
+import './Appcss';
 import HeaderComponent from "./HeaderComponent";
-import PostSectionComponent from "./PostSectionComponent";
 import FooterComponent from "./FooterComponent";
 import RouteComponent from "../routes/RouteComponent";
 

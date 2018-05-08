@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import './App.css';
 import CategoryComponent from "./CategoryComponent";
 import PostComponent from "./PostComponent";
 import * as BlogsAPI from "../server/BlogsAPI";

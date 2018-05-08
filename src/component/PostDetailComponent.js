@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import './App.css';
 import * as BlogsAPI from '../server/BlogsAPI'
 import CategoryComponent from "./CategoryComponent";
 import CommentSectionComponent from "./CommentSectionComponent";
@@ -10,8 +9,7 @@ class PostDetailComponent extends Component {
     state = {
         id: '',
         message: '',
-        post: {},
-        sos:1
+        post: {}
     }
 
     componentDidMount() {

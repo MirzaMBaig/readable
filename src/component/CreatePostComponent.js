@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import './App.css';
 import * as BlogsAPI from "../server/BlogsAPI";
 
 const uuid = require('uuid');
