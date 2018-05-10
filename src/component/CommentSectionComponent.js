@@ -34,7 +34,6 @@ class CommentSectionComponent extends Component {
             "author":comment.username,
             "timestamp":new Date().getTime(),
         };
-        console.log(comment);
         BlogsAPI.saveOrUpdateComment({
             "id":comment.id||uuid(),
             "parentId":this.props.post.id,
@@ -46,8 +45,8 @@ class CommentSectionComponent extends Component {
 
     }
 
-    cancelComments(){
-
+    cancelComments(event){
+        this.getComments(this.props.post.id)
     }
 
     startEdit(comment) {
@@ -55,22 +54,17 @@ class CommentSectionComponent extends Component {
         let prevComments = this.state.comments||{};
         let filterEditedComment = prevComments.filter(c => c.id!==comment.id);
         filterEditedComment.push(comment);
-        console.log(filterEditedComment);
         this.setState({
             filterEditedComment,
         })
-    }
-
-    endEdit(comment) {
-        comment.isEditing = false;
     }
 
     render() {
         const comments = this.state.comments||[];
         return (
             <div>
-               <CommentComponent saveComment={(comment)=>this.saveComment(comment)} startEdit={(comment)=>this.startEdit(comment)} comments={comments} />
-               <CreateCommentComponent  saveComment={(comment)=>this.saveComment(comment)} />
+               <CommentComponent cancelComments={(event)=> this.cancelComments(event)} saveComment={(comment)=>this.saveComment(comment)} startEdit={(comment)=>this.startEdit(comment)} comments={comments} />
+               <CreateCommentComponent  cancelComments={(event)=> this.cancelComments(event)} saveComment={(comment)=>this.saveComment(comment)} />
             </div>
         );
     }

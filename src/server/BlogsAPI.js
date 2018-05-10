@@ -28,8 +28,6 @@ export const getPost = (id) => {
 
 
 export const getPosts = (urlString) =>{
-  console.log(urlString);
-
   return fetch(`${api}/${urlString}`, {headers})
   .then(res => res.json())
   .then(data => data);
@@ -64,7 +62,6 @@ export const search = (query) =>
     .then(data => data.books)
 
 export const saveOrUpdateComment = (comment) => {
-    console.log(comment);
     return fetch(`${api}/comments`, {
         method: comment.isEditing?'PUT':'POST',
         headers: {
@@ -77,7 +74,6 @@ export const saveOrUpdateComment = (comment) => {
 }
 
 export const savePost = (post) => {
-    console.log(post);
     return fetch(`${api}/posts`, {
         method: 'POST',
         headers: {

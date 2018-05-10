@@ -55,7 +55,7 @@ class PostDetailComponent extends Component {
                                         <div class="date"><i
                                             class="icon-clock"></i>{new Date(post.timestamp).toDateString()}</div>
                                         <div class="views"><i class="icon-eye"></i> {post.voteScore}</div>
-                                        <div class="comments"><i class="icon-comment"></i>{post.voteScore}</div>
+                                        <div class="comments"><i class="icon-comment"></i>{post.commentCount}</div>
 
                                     </div>
                                 </div>

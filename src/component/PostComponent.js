@@ -24,7 +24,7 @@ class PostComponent extends Component {
                                 <div class="title"><span>{post.author}</span></div>
                                 <div class="date"><i class="icon-clock"></i> {new Date(post.timestamp).toDateString()}</div>
                                 <div class="title"><i class="icon-comment"></i>{post.commentCount}</div>
-                                <div class="comments"><i class="icon-eye"></i>{post.commentCount}</div>
+                                <div class="comments"><i class="icon-eye"></i>{post.voteScore}</div>
                             </footer>
                         </div>
                     </div>

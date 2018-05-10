@@ -24,7 +24,6 @@ class CreateCommentComponent extends Component {
     saveComments(event) {
         event.preventDefault();
         if (this.state.username.length > 0
-            && this.state.useremail.length > 0
             && this.state.usercomment.length > 0) {
             this.props.saveComment(this.state)
             this.setState({
@@ -38,14 +37,8 @@ class CreateCommentComponent extends Component {
         }
     }
 
-    cancelComments(event) {
-        this.props.cancelComments(this.state)
-    }
-
     componentDidMount(){
         let editComment = this.props.comment||{};
-
-        console.log(editComment);
         this.setState({
             "id":editComment.id,
             "username": editComment.author,
@@ -74,12 +67,12 @@ class CreateCommentComponent extends Component {
                                 <textarea name="usercomment" id="usercomment" onChange={(event) =>  this.handleCommentChange(event.target.value)}  value={this.state.usercomment}
                                           placeholder="Type your comment" class="form-control"></textarea>
                             </div>
-                            <div class="form-group col-md-6">
+                            <div class="form-group col-md-3">
                                 <button type="button" class="btn btn-secondary"
                                         onClick={(event) => this.saveComments(event)}>Submit Comment
                                 </button>
                             </div>
-                            <div class="form-group col-md-6 ml-auto">
+                            <div class="form-group col-md-3 ml-auto">
                                 <button type="button" class="btn btn-secondary"
                                         onClick={(event) => this.cancelComments(event)}>Cancel
                                 </button>
@@ -89,6 +82,10 @@ class CreateCommentComponent extends Component {
                 </div>
             </div>
         );
+    }
+
+    cancelComments(event) {
+        this.props.cancelComments(event);
     }
 }
 

@@ -15,16 +15,18 @@ class CreatePostComponent extends Component {
     }
 
     componentDidMount(){
+        if(this.props.post!=undefined && this.props.post.state!=undefined){
+            let post = this.props.post.state.post;
+            this.setState({
+                id:post.id,
+                title:post.title,
+                "timestamp": Date.now(),
+                body:post.body,
+                author:post.author,
+                category:post.category,
+            })
+        }
 
-        let post = this.props.post.state.post;
-        this.setState({
-            id:post.id,
-            title:post.title,
-            "timestamp": Date.now(),
-            body:post.body,
-            author:post.author,
-            category:post.category,
-        })
     }
 
     handleTitleChange(title) {
@@ -44,8 +46,6 @@ class CreatePostComponent extends Component {
     }
 
     savePost(event) {
-        console.log("this is title " + this.state.title + typeof this.state.title);
-        console.log(this.state);
         event.preventDefault();
         /*if (this.state.title.length > 0
             && this.state.author.length > 0

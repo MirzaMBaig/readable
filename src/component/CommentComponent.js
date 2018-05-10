@@ -31,7 +31,7 @@ class CommentComponent extends Component {
                         </div>
                         }
                         { comment.isEditing &&
-                        <CreateCommentComponent comment={comment} saveComment={(comment)=>this.props.saveComment(comment)}/>
+                        <CreateCommentComponent cancelComments={(event)=>this.props.cancelComments(event)} comment={comment} saveComment={(comment)=>this.props.saveComment(comment)}/>
                         }
                     </div>
                 )}
