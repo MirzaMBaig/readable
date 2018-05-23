@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import CreateCommentComponent from "./CreateCommentComponent";
+import * as BlogsAPI from '../server/BlogsAPI'
 
 class CommentComponent extends Component {
 
@@ -12,31 +13,51 @@ class CommentComponent extends Component {
                 </header>
                 {
                     comments.map(comment =>
-                    <div key={comment.id}>
-                        { !comment.isEditing &&
-                        <div key={comment.id} class="comment">
-                            <div class="comment-header d-flex justify-content-between">
-                                <div class="user d-flex align-items-center">
-                                    <div class="image"><img src="/images/user.svg" alt="..."
-                                                            class="img-fluid rounded-circle"/></div>
-                                    <div class="title"><strong>{comment.author}</strong>
-                                        <span class="date">{new Date(comment.timestamp).toDateString()}</span>
+                        <div key={comment.id}>
+                            {!comment.isEditing &&
+                            <div key={comment.id} class="comment">
+                                <div class="comment-header d-flex justify-content-between">
+                                    <div class="user d-flex align-items-center">
+                                        <div class="image"><img src="/images/user.svg" alt="..."
+                                                                class="img-fluid rounded-circle"/></div>
+                                        <div class="title"><strong>{comment.author}</strong>
+                                            <span class="date">{new Date(comment.timestamp).toDateString()}</span>
+                                        </div>
                                     </div>
                                 </div>
+                                <div class="comment-body">
+                                    <p>{comment.body}</p>
+                                    <div className={'row'}>
+                                        <div className={'col-md-6'}>
+                                            <button onClick={() => this.props.startEdit(comment)}>edit</button>
+                                        </div>
+                                        <div className={'col-md-6'}>
+                                            <button type="button" class="btn-danger d-flex justify-content-right"
+                                                    onClick={() => this.onDeleteComment(comment.id, this.props.post.id)}>delete
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+
                             </div>
-                            <div class="comment-body">
-                                <p>{comment.body}</p>
-                                <button onClick={() => this.props.startEdit(comment)}>edit</button>
-                            </div>
+
+                            }
+                            {comment.isEditing &&
+                            <CreateCommentComponent cancelComments={(event) => this.props.cancelComments(event)}
+                                                    comment={comment}
+                                                    saveComment={(comment) => this.props.saveComment(comment)}/>
+                            }
                         </div>
-                        }
-                        { comment.isEditing &&
-                        <CreateCommentComponent cancelComments={(event)=>this.props.cancelComments(event)} comment={comment} saveComment={(comment)=>this.props.saveComment(comment)}/>
-                        }
-                    </div>
-                )}
+                    )}
             </div>
         );
+    }
+
+    onDeleteComment(id, postID) {
+        BlogsAPI.deleteComment(id);
+        setTimeout(
+            this.props.history.replace(`/posts/${postID}`),
+            2 * 1000);
     }
 }
 

@@ -18,22 +18,11 @@ class CommentSectionComponent extends Component {
         );
     }
 
-    componentDidMount(){
-        this.getComments(this.props.post.id)
-    }
-
     componentWillReceiveProps(nextProps){
         this.getComments(nextProps.post.id)
     }
 
     saveComment(comment){
-        let commentwithId = {
-            "id":comment.id||uuid(),
-            "parentId":this.props.post.id,
-            "body":comment.usercomment,
-            "author":comment.username,
-            "timestamp":new Date().getTime(),
-        };
         BlogsAPI.saveOrUpdateComment({
             "id":comment.id||uuid(),
             "parentId":this.props.post.id,
@@ -42,7 +31,6 @@ class CommentSectionComponent extends Component {
             "timestamp":new Date().getTime(),
             "isEditing":comment.isEditing,
         }).then(data => this.getComments(this.props.post.id));
-
     }
 
     cancelComments(event){
@@ -63,7 +51,7 @@ class CommentSectionComponent extends Component {
         const comments = this.state.comments||[];
         return (
             <div>
-               <CommentComponent cancelComments={(event)=> this.cancelComments(event)} saveComment={(comment)=>this.saveComment(comment)} startEdit={(comment)=>this.startEdit(comment)} comments={comments} />
+               <CommentComponent {...this.props} cancelComments={(event)=> this.cancelComments(event)} saveComment={(comment)=>this.saveComment(comment)} startEdit={(comment)=>this.startEdit(comment)} comments={comments} />
                <CreateCommentComponent  cancelComments={(event)=> this.cancelComments(event)} saveComment={(comment)=>this.saveComment(comment)} />
             </div>
         );

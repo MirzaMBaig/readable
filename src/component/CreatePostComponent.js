@@ -15,7 +15,7 @@ class CreatePostComponent extends Component {
     }
 
     componentDidMount(){
-        if(this.props.post!=undefined && this.props.post.state!=undefined){
+        if(this.props.post!==undefined && this.props.post.state!==undefined){
             let post = this.props.post.state.post;
             this.setState({
                 id:post.id,

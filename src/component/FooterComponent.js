@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 
 class FooterComponent extends Component {
     render() {
-        const { id } = this.props;
         return (
             <footer class="main-footer">
                 <div class="container">
@@ -16,27 +15,27 @@ class FooterComponent extends Component {
                                 <p>Phone: (020) 123 456 789</p>
                                 <p>Email: <a href="mailto:info@company.com">Info@Company.com</a></p>
                                 <ul class="social-menu">
-                                    <li class="list-inline-item"><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                    <li class="list-inline-item"><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                    <li class="list-inline-item"><a href="#"><i class="fa fa-instagram"></i></a></li>
-                                    <li class="list-inline-item"><a href="#"><i class="fa fa-behance"></i></a></li>
-                                    <li class="list-inline-item"><a href="#"><i class="fa fa-pinterest"></i></a></li>
+                                    <li class="list-inline-item"><a href={null}><i class="fa fa-facebook"></i></a></li>
+                                    <li class="list-inline-item"><a href={null}><i class="fa fa-twitter"></i></a></li>
+                                    <li class="list-inline-item"><a href={null}><i class="fa fa-instagram"></i></a></li>
+                                    <li class="list-inline-item"><a href={null}><i class="fa fa-behance"></i></a></li>
+                                    <li class="list-inline-item"><a href={null}><i class="fa fa-pinterest"></i></a></li>
                                 </ul>
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="menus d-flex">
                                 <ul class="list-unstyled">
-                                    <li> <a href="#">My Account</a></li>
-                                    <li> <a href="#">Add Listing</a></li>
-                                    <li> <a href="#">Pricing</a></li>
-                                    <li> <a href="#">Privacy &amp; Policy</a></li>
+                                    <li> <a href={null}>My Account</a></li>
+                                    <li> <a href={null}>Add Listing</a></li>
+                                    <li> <a href={null}>Pricing</a></li>
+                                    <li> <a href={null}>Privacy &amp; Policy</a></li>
                                 </ul>
                                 <ul class="list-unstyled">
-                                    <li> <a href="#">Our Partners</a></li>
-                                    <li> <a href="#">FAQ</a></li>
-                                    <li> <a href="#">How It Works</a></li>
-                                    <li> <a href="#">Contact</a></li>
+                                    <li> <a href={null}>Our Partners</a></li>
+                                    <li> <a href={null}>FAQ</a></li>
+                                    <li> <a href={null}>How It Works</a></li>
+                                    <li> <a href={null}>Contact</a></li>
                                 </ul>
                             </div>
                         </div>

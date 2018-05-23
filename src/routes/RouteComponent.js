@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Route} from "react-router-dom";
+import {Route, Switch} from "react-router-dom";
 import PostSectionComponent from '../component/PostSectionComponent';
 import PostDetailComponent from '../component/PostDetailComponent';
 import CreatePostComponent from "../component/CreatePostComponent";
@@ -8,20 +8,25 @@ class RouteComponent extends Component {
     render() {
         return (
             <div>
-                <Route exact path={`/`}
-                       render={(props) => (<PostSectionComponent/> )}/>
+                <Switch>
+                    <Route exact path={`/`}
+                           render={(props) => (<PostSectionComponent/> )}/>
 
-                <Route exact path={`/:category`}
-                       render={(props) => (<PostSectionComponent category={props.match.params.category}/> )}/>
+                    <Route exact path={`/:category`}
+                           render={(props) => (<PostSectionComponent category={props.match.params.category}/> )}/>
 
-                <Route exact path={`/posts/:id`}
-                       render={(props) => (<PostDetailComponent pageProps={props}/> )}/>
+                    <Route exact path={`/delete/posts/:id`}
+                           render={(props) => (<PostSectionComponent deleteId={props.match.params.id}/> )}/>
 
-                <Route exact path={`/post/edit`}
-                       render={(props) => (<CreatePostComponent post={props.location}/> )}/>
+                    <Route exact path={`/posts/:id`}
+                           render={(props) => (<PostDetailComponent {...props} pageProps={props}/> )}/>
 
-                <Route exact path={`/post/create`}
-                       render={(props) => (<CreatePostComponent/> )}/>
+                    <Route exact path={`/post/edit`}
+                           render={(props) => (<CreatePostComponent post={props.location}/> )}/>
+
+                    <Route exact path={`/post/create`}
+                           render={(props) => (<CreatePostComponent/> )}/>
+                </Switch>
             </div>
         );
     }
