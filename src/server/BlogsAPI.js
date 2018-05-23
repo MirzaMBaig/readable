@@ -109,3 +109,33 @@ export const deleteComment = (id) => {
         .then(data => data)
 
 }
+
+export const votePost = (vote, id) => {
+    console.log(vote);
+
+    return fetch(`${api}/posts/${id}`, {
+        method: 'POST',
+        headers: {
+            ...headers,
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(vote)
+    }).then(res => res.json())
+        .then(data => data)
+
+}
+
+export const voteComment = (vote, id) => {
+    console.log(vote);
+
+    return fetch(`${api}/comments/${id}`, {
+        method: 'POST',
+        headers: {
+            ...headers,
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(vote)
+    }).then(res => res.json())
+        .then(data => data)
+
+}

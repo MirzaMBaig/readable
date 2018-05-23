@@ -3,7 +3,6 @@ import {Link} from "react-router-dom";
 
 class HeaderComponent extends Component {
     render() {
-        const { id } = this.props;
         return (
             <header className="header">
                 <nav className="navbar navbar-expand-lg">

@@ -5,7 +5,7 @@ import * as BlogsAPI from '../server/BlogsAPI'
 class CommentComponent extends Component {
 
     render() {
-        const comments = this.props.comments || [];
+        const comments = this.props.comments;
         return (
             <div class="post-comments">
                 <header>
@@ -22,6 +22,9 @@ class CommentComponent extends Component {
                                                                 class="img-fluid rounded-circle"/></div>
                                         <div class="title"><strong>{comment.author}</strong>
                                             <span class="date">{new Date(comment.timestamp).toDateString()}</span>
+                                            <span class="comments" onClick={()=>this.voteComment('upVote', comment.id)}><i class="step fi-like size-36"></i>{comment.voteScore}</span>
+                                            <span class="comments" onClick={()=>this.voteComment('downVote',comment.id)}><i class="step fi-dislike size-36"></i></span>
+
                                         </div>
                                     </div>
                                 </div>
@@ -58,6 +61,15 @@ class CommentComponent extends Component {
         setTimeout(
             this.props.history.replace(`/posts/${postID}`),
             2 * 1000);
+    }
+
+    voteComment(vote, id) {
+        BlogsAPI.voteComment({"option":vote}, id)
+            .then(comment=> {
+                setTimeout(
+                    this.props.history.replace(`/posts/${comment.parentId}`),
+                    2 * 1000);
+        });
     }
 }
 

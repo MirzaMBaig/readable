@@ -47,15 +47,15 @@ class PostDetailComponent extends Component {
                                     </Link>
 
                                     <div class="post-footer d-flex align-items-center flex-column flex-sm-row"><a
-                                        href="#" class="author d-flex align-items-center flex-wrap">
+                                        href={null} class="author d-flex align-items-center flex-wrap">
                                         <div class="avatar"><img src="/images/user.svg" alt="..." class="img-fluid"/>
                                         </div>
                                         <div class="title"><span>{post.author}</span></div>
                                     </a>
                                         <div class="d-flex align-items-center flex-wrap">
-                                            <div class="date"><i
-                                                class="icon-clock"></i>{new Date(post.timestamp).toDateString()}</div>
-
+                                            <div class="date"><i class="icon-clock"></i>{new Date(post.timestamp).toDateString()}</div>
+                                            <div class="comments" onClick={()=>this.votePost('upVote', post.id)}><i class="step fi-like size-36"></i>{post.voteScore}</div>
+                                            <div class="comments" onClick={()=>this.votePost('downVote',post.id)}><i class="step fi-dislike size-36"></i></div>
                                         </div>
                                     </div>
                                     <div class="post-body">
@@ -82,6 +82,11 @@ class PostDetailComponent extends Component {
             this.props.history.replace('/'),
             2*1000);
 
+
+    }
+
+    votePost(vote, id) {
+        BlogsAPI.votePost({"option":vote}, id).then(post=> this.setState({post}));
 
     }
 }
