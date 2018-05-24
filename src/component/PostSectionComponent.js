@@ -5,26 +5,9 @@ import * as BlogsAPI from "../server/BlogsAPI";
 import * as actions from "../actions/index";
 import {connect} from "react-redux";
 
-const sortBy = require('sort-by')
-
 class PostSectionComponent extends Component {
 
-    state = {
-        posts: [],
-        sortValue: 'voteScore',
-    }
-
-    sortPost(sortValue) {
-        this.setState((prevState) => {
-            return {
-                sortValue: sortValue,
-                posts: prevState.posts.sort(sortBy('-' + sortValue)),
-            };
-        });
-    }
-
     componentDidMount() {
-        console.log('componentDidMount');
         BlogsAPI.getPosts('posts')
             .then(posts => this.props.getPosts(posts))
             .catch(err => {
@@ -35,6 +18,7 @@ class PostSectionComponent extends Component {
 
     render() {
         let posts = this.props.posts || [];
+        console.log(this.props);
         if(this.props.category){
             posts =  posts.filter(post=> post.category === this.props.category)
         }
@@ -54,8 +38,8 @@ class PostSectionComponent extends Component {
                                         by</label>
                                     <div class="col-6">
                                         <select class="custom-select custom-select-sm" id="post_sortBy"
-                                                value={this.state.sortValue}
-                                                onChange={(event) => this.sortPost(event.target.value)}>
+                                                value={this.props.sortValue}
+                                                onChange={(event) => this.props.sortPosts(event.target.value)}>
                                             <option value={'voteScore'}>Score</option>
                                             <option value={'timestamp'}>Time</option>
                                         </select>
@@ -82,13 +66,14 @@ class PostSectionComponent extends Component {
 
 function mapStateToProps(state, props) {
         return {
-            posts:state && state.posts,
-            category:props.category,
+            posts:state.posts,
+            sortValue:state.sortValue,
         }
 };
 
 const mapDispatchToProps = dispatch => ({
-    getPosts: (posts) => dispatch(actions.receivePosts(posts))
+    getPosts: (posts) => dispatch(actions.receivePosts(posts)),
+    sortPosts: (sortValue) => dispatch(actions.sortPosts(sortValue))
 });
 
 

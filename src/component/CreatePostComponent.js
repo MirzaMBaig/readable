@@ -47,16 +47,9 @@ class CreatePostComponent extends Component {
 
     savePost(event) {
         event.preventDefault();
-        /*if (this.state.title.length > 0
-            && this.state.author.length > 0
-            && this.state.category.length > 0
-            && this.state.post.length > 0) {*/
             BlogsAPI.savePost(this.state)
-            //this.props.history.push('/')
-
-        } /*else {
-            alert('Please provide all details for post');
-        }*/
+            setTimeout(this.props.history.push('/'), 2000);
+        }
 
     render() {
         return (

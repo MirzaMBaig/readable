@@ -25,7 +25,7 @@ class RouteComponent extends Component {
                            render={(props) => (<CreatePostComponent post={props.location}/> )}/>
 
                     <Route exact path={`/post/create`}
-                           render={(props) => (<CreatePostComponent/> )}/>
+                           render={(props) => (<CreatePostComponent {...props}/> )}/>
                 </Switch>
             </div>
         );
