@@ -23,21 +23,21 @@ class PostSectionComponent extends Component {
             posts =  posts.filter(post=> post.category === this.props.category)
         }
         return (
-            <section class="featured-posts no-padding-top">
+            <section className={"featured-posts no-padding-top"}>
                 <div className={'my-2'}></div>
                 <div className={"container"}>
                     <div className={"row"}>
-                        <div class="col">{posts.length > 0 &&
+                        <div className={"col"}>{posts.length > 0 &&
                         <h2>All posts {this.props.category && 'of category ' + this.props.category}</h2>}
                             {!posts.length && <h2>Start writing new post</h2>}
                         </div>
-                        <div class="col">
-                            <form class="form-horizontal">
-                                <div class="form-group row">
-                                    <label for="post_sortBy" class="col-6 col-form-label text-xl-right no-gutters">Sort
+                        <div className={"col"}>
+                            <form className={"form-horizontal"}>
+                                <div className={"form-group row"}>
+                                    <label htmlFor="post_sortBy" className={"col-6 col-form-label text-xl-right no-gutters"}>Sort
                                         by</label>
-                                    <div class="col-6">
-                                        <select class="custom-select custom-select-sm" id="post_sortBy"
+                                    <div className={"col-6"}>
+                                        <select className={"custom-select custom-select-sm"} id="post_sortBy"
                                                 value={this.props.sortValue}
                                                 onChange={(event) => this.props.sortPosts(event.target.value)}>
                                             <option value={'voteScore'}>Score</option>
@@ -49,9 +49,9 @@ class PostSectionComponent extends Component {
                         </div>
                     </div>
                 </div>
-                <div class="container">
-                    <div class="row">
-                        <div class="col-8">
+                <div className={"container"}>
+                    <div className={"row"}>
+                        <div className={"col-8"}>
                             {
                                 posts && posts.map(post => <PostComponent key={post.id} post={post}/>)
                             }

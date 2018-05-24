@@ -17,13 +17,13 @@ class CategoryComponent extends Component {
     render() {
         const categories = this.state.categories || [];
         return (
-            <div class="col-4">
-                <div class="widget categories">
+            <div className={"col-4"}>
+                <div className={"widget categories"}>
                     <header>
-                        <h3 class="h6">Categories</h3>
+                        <h3 className={"h6"}>Categories</h3>
                     </header>
                     {categories.map( category =>
-                        <div key={category.path} class="item d-flex justify-content-between">
+                        <div key={category.path} className={"item d-flex justify-content-between"}>
                             <Link to={`/${category.path}`}>{category.name}</Link>
                         </div>
                     )}
