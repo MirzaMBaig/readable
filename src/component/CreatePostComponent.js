@@ -53,32 +53,32 @@ class CreatePostComponent extends Component {
 
     render() {
         return (
-            <div class="container">
-                <div class="row">
-                    <main class="post blog-post col-lg-8">
-                        <div class="container">
+            <div className="container">
+                <div className="row">
+                    <main className="post blog-post col-lg-8">
+                        <div className="container">
                             <form>
-                                <div class="form-group">
+                                <div className="form-group">
                                     <label for="post_title">Title</label>
-                                    <input type="text" class="form-control"
+                                    <input type="text" className="form-control"
                                            value={this.state.title}
                                            onChange={(event) => this.handleTitleChange(event.target.value)}
                                            id="post_title" placeholder="Post Title"/>
                                 </div>
-                                <div class="row">
-                                    <div class="col-6">
-                                        <div class="form-group">
+                                <div className="row">
+                                    <div className="col-6">
+                                        <div className="form-group">
                                             <label for="post_author">Author</label>
-                                            <input type="text" class="form-control"
+                                            <input type="text" className="form-control"
                                                    value={this.state.author} id="post_author"
                                                    onChange={(event) => this.handleAuthorChange(event.target.value)}
                                                    placeholder="Post Author"/>
                                         </div>
                                     </div>
-                                    <div class="col-6">
-                                        <div class="form-group">
+                                    <div className="col-6">
+                                        <div className="form-group">
                                             <label for="post_category">Category</label>
-                                            <select class="form-control" id="post_category"
+                                            <select className="form-control" id="post_category"
                                                     value={this.state.category}
                                                     onChange={(event) => this.handleCategoryChange(event.target.value)}>
                                                 <option value={'react'}>React</option>
@@ -88,15 +88,15 @@ class CreatePostComponent extends Component {
                                         </div>
                                     </div>
                                 </div>
-                                <div class="form-group">
+                                <div className="form-group">
                                     <label for="post_body">Post</label>
-                                    <textarea class="form-control"
+                                    <textarea className="form-control"
                                               value={this.state.body}
                                               onChange={(event) => this.handlePostChange(event.target.value)}
                                               id="post_body" rows="7"></textarea>
                                 </div>
-                                <div class="form-group ml-auto">
-                                    <button type="button" class="btn btn-success ml-auto"
+                                <div className="form-group ml-auto">
+                                    <button type="button" className="btn btn-success ml-auto"
                                             onClick={(event) => this.savePost(event)}>Create
                                     </button>
                                 </div>

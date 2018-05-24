@@ -28,41 +28,41 @@ class PostDetailComponent extends Component {
         }
 
         return (
-            <div class="container">
-                <div class="row">
-                    <main class="post blog-post col-8">
-                        <div class="container">
-                            <div class="post-single">
-                                <div class="post-details">
-                                    <div class="post-meta d-flex justify-content-between">
-                                        <div class="category">
+            <div className="container">
+                <div className="row">
+                    <main className="post blog-post col-8">
+                        <div className="container">
+                            <div className="post-single">
+                                <div className="post-details">
+                                    <div className="post-meta d-flex justify-content-between">
+                                        <div className="category">
                                             <Link to={`/${post.category}`}>#{post.category}</Link>
                                         </div>
                                     </div>
                                     <Link to={location}>
                                         <h1>
                                             {post.title}
-                                            <button type="button" class="btn btn-link">edit</button>
+                                            <button type="button" className="btn btn-link">edit</button>
                                         </h1>
                                     </Link>
 
-                                    <div class="post-footer d-flex align-items-center flex-column flex-sm-row"><a
-                                        href={null} class="author d-flex align-items-center flex-wrap">
-                                        <div class="avatar"><img src="/images/user.svg" alt="..." class="img-fluid"/>
+                                    <div className="post-footer d-flex align-items-center flex-column flex-sm-row"><a
+                                        href={null} className="author d-flex align-items-center flex-wrap">
+                                        <div className="avatar"><img src="/images/user.svg" alt="..." className="img-fluid"/>
                                         </div>
-                                        <div class="title"><span>{post.author}</span></div>
+                                        <div className="title"><span>{post.author}</span></div>
                                     </a>
-                                        <div class="d-flex align-items-center flex-wrap">
-                                            <div class="date"><i class="icon-clock"></i>{new Date(post.timestamp).toDateString()}</div>
-                                            <div class="comments" onClick={()=>this.votePost('upVote', post.id)}><i class="step fi-like size-36"></i>{post.voteScore}</div>
-                                            <div class="comments" onClick={()=>this.votePost('downVote',post.id)}><i class="step fi-dislike size-36"></i></div>
+                                        <div className="d-flex align-items-center flex-wrap">
+                                            <div className="date"><i className="icon-clock"></i>{new Date(post.timestamp).toDateString()}</div>
+                                            <div className="comments" onClick={()=>this.votePost('upVote', post.id)}><i className="step fi-like size-36"></i>{post.voteScore}</div>
+                                            <div className="comments" onClick={()=>this.votePost('downVote',post.id)}><i className="step fi-dislike size-36"></i></div>
                                         </div>
                                     </div>
-                                    <div class="post-body">
-                                        <p class="lead">{post.body}</p>
+                                    <div className="post-body">
+                                        <p className="lead">{post.body}</p>
                                     </div>
                                     <div>
-                                        <button type="button" class="btn-danger d-flex justify-content-right" onClick={()=> this.onDelete(post.id)}>delete</button>
+                                        <button type="button" className="btn-danger d-flex justify-content-right" onClick={()=> this.onDelete(post.id)}>delete</button>
                                     </div>
 
                                     <CommentSectionComponent {...this.props} post={post}/>

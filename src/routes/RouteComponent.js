@@ -16,13 +16,13 @@ class RouteComponent extends Component {
                            render={(props) => (<PostSectionComponent category={props.match.params.category}/> )}/>
 
                     <Route exact path={`/delete/posts/:id`}
-                           render={(props) => (<PostSectionComponent deleteId={props.match.params.id}/> )}/>
+                           render={(props) => (<PostSectionComponent  {...props} deleteId={props.match.params.id}/> )}/>
 
                     <Route exact path={`/posts/:id`}
                            render={(props) => (<PostDetailComponent {...props} pageProps={props}/> )}/>
 
                     <Route exact path={`/post/edit`}
-                           render={(props) => (<CreatePostComponent post={props.location}/> )}/>
+                           render={(props) => (<CreatePostComponent {...props} post={props.location}/> )}/>
 
                     <Route exact path={`/post/create`}
                            render={(props) => (<CreatePostComponent {...props}/> )}/>

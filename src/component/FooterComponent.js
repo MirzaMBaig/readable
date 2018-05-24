@@ -14,7 +14,7 @@ class FooterComponent extends Component {
                                 <p>53 Broadway, Broklyn, NY 11249</p>
                                 <p>Phone: (020) 123 456 789</p>
                                 <p>Email: <a href="mailto:info@company.com">Info@Company.com</a></p>
-                                <ul class="social-menu">
+                                <ul className="social-menu">
                                     <li className="list-inline-item"><a href={null}><i className="fa fa-facebook"></i></a></li>
                                     <li className="list-inline-item"><a href={null}><i className="fa fa-twitter"></i></a></li>
                                     <li className="list-inline-item"><a href={null}><i className="fa fa-instagram"></i></a></li>
