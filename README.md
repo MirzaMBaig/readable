@@ -11,7 +11,7 @@ yarn install
 yarn start
 ```
 
-Note: Use Thumbs up and down to increment and decrement vote score in POST DETAIL VIEW
+Note: Use Thumbs up and down to increment and decrement vote score for post and comments in POST DETAIL VIEW.
 
 The application is have four views:
 
