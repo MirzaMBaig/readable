@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import './Appcss';
 import HeaderComponent from "./HeaderComponent";
 import FooterComponent from "./FooterComponent";
 import RouteComponent from "../routes/RouteComponent";
