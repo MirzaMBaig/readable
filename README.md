@@ -1,5 +1,19 @@
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
+
+## Installation
+
+```
+yarn install 
+```
+## Starting the project with iOS simulator
+
+```
+yarn start
+```
+
+Note: Use Thumbs up and down to increment and decrement vote score in POST DETAIL VIEW
+
 The application is have four views:
 
 *Default (Root)
@@ -27,5 +41,3 @@ Post/Comment UI
 
 Posts and comments, 
 in all views where they are displayed, should display their current score and should have controls to increment or decrement the voteScore for the object. Posts should display the number of comments associated with the post.
-
-Use Thumbs up and down to increment and decrement vote score

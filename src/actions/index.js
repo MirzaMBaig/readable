@@ -17,8 +17,6 @@ export function postsRetrieveData() {
             .then(posts => {
                 dispatch(loadingPosts(false));
                 dispatch(errorRetrievePosts(false))
-                console.log("posts")
-                console.log(posts)
                 return posts;
 
             }).then((posts) => dispatch(receivePosts(posts)))
@@ -79,7 +77,6 @@ export const savePost =  (post) => {
 
             }).then((newPost) => dispatch(createPost(newPost)))
             .catch(() => {
-                console.log("mai ya eerr");
                 dispatch(errorSavingPosts(true))
             });
     };
