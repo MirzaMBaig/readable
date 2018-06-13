@@ -3,6 +3,7 @@ import {Route, Switch} from "react-router-dom";
 import PostSectionComponent from '../component/PostSectionComponent';
 import PostDetailComponent from '../component/PostDetailComponent';
 import CreatePostComponent from "../component/CreatePostComponent";
+import NotFoundComponent from '../component/NotFoundComponent';
 
 class RouteComponent extends Component {
     render() {
@@ -26,6 +27,8 @@ class RouteComponent extends Component {
 
                     <Route exact path={`/post/create`}
                            render={(props) => (<CreatePostComponent {...props}/> )}/>
+
+                    <Route path={`*`} component={NotFoundComponent} />
                 </Switch>
             </div>
         );
