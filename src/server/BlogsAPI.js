@@ -69,14 +69,10 @@ export const savePost = (post) => {
 }
 
 export const deletePost = (id) => {
-    console.log("delete");
-    console.log(id);
     console.log(typeof id === 'string');
     if (id === undefined || id === 'undefined') {
         return;
     }
-    console.log('deleting....');
-    console.log(id);
 
     return fetch(`${api}/posts/${id}`, {
         method: 'DELETE',

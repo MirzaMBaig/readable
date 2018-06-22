@@ -6,7 +6,9 @@ export const ERROR_SAVING_POST = 'ERROR_SAVING_POST'
 export const LOADING_RECEIVE_POST = 'LOADING_RECEIVE_POST'
 export const SORT_POST = 'SORT_POST'
 export const CREATE_POST = 'CREATE_POST'
+export const DELETE_POST = 'DELETE_POST'
 export const FILTER_POST = 'FILTER_POST'
+export const VOTE_POST = 'VOTE_POST'
 
 
 export function postsRetrieveData() {
@@ -24,6 +26,36 @@ export function postsRetrieveData() {
                dispatch(errorRetrievePosts(true))
            });
     };
+}
+
+export function votePostOnServer(vote, id) {
+    return (dispatch) => {
+        BlogsAPI.votePost({ "option": vote }, id)
+            .then(post => dispatch(votePost(post)));
+    };
+}
+
+export function deletePostOnServer(post) {
+    return (dispatch) => {
+        console.log(post);
+        BlogsAPI.deletePost(post.id)
+            .then(p=> 
+                dispatch(deletePost(post))
+            );
+    };
+}
+
+export const deletePost = (post) => {
+    return {
+        type: DELETE_POST,
+        post,
+    }
+}
+export const votePost = (post) => {
+    return {
+        type: VOTE_POST,
+        post,
+    }
 }
 
 export const receivePosts =  (posts) => {
@@ -68,6 +100,7 @@ export const createPost = (post) => {
         post,
     }
 }
+
 
 export const savePost =  (post) => {
     return (dispatch) => {

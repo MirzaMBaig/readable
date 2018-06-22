@@ -22,6 +22,10 @@ class CommentSectionComponent extends Component {
         this.getComments(nextProps.post.id)
     }
 
+    componentDidMount(){
+        this.getComments(this.props.post.id)
+    }
+
     saveComment(comment){
         BlogsAPI.saveOrUpdateComment({
             "id":comment.id||uuid(),

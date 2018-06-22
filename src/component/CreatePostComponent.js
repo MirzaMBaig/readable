@@ -15,18 +15,16 @@ class CreatePostComponent extends Component {
         "body": '',
         "author": '',
         "category": 'react',
+        "buttonName":"create"
     }
 
     componentDidMount() {
+
         if (this.props.post !== undefined && this.props.post.state !== undefined) {
             let post = this.props.post.state.post;
             this.setState({
-                id: post.id,
-                title: post.title,
-                "timestamp": Date.now(),
-                body: post.body,
-                author: post.author,
-                category: post.category,
+                ...post,
+                buttonName: "update"
             })
         }
     }
@@ -47,10 +45,12 @@ class CreatePostComponent extends Component {
         this.setState({ body })
     }
 
-    savePost(event) {
+    onSavePost(event) {
         event.preventDefault();
         this.props.savePost(this.state);
+        this.goBack(event);
     }
+
 
     goBack(event) {
         event.preventDefault();
@@ -104,14 +104,13 @@ class CreatePostComponent extends Component {
                                 </div>
                                 <div className="form-group">
                                     <button type="button" className="btn btn-success"
-                                        onClick={(event) => this.savePost(event)}>Create
+                                        onClick={(event) => this.onSavePost(event)}>{this.state.buttonName}
                                     </button>
                                     <button type="button" className="btn btn-success pull-right"
                                         onClick={(event) => this.goBack(event)}>Back
                                     </button>
                                 </div>
                                 <div className="form-group ml-auto">
-                                   
                                 </div>
                             </form>
                         </div>
@@ -125,6 +124,7 @@ class CreatePostComponent extends Component {
 
 function mapStateToProps(state, props) {
     return {
+        updatedPost: state.posts.addedPost,
         hasError1: state.postsHaveError.errorSavingPost,
     }
 };

@@ -8,14 +8,19 @@ import { PostError } from './PostErrorComponent'
 class PostSectionComponent extends Component {
 
     componentDidMount() {
+        this.getData();
+    }
+
+    getData = () => {
+        console.log("fetchData")
         this.props.fetchData();
     }
 
     render() {
         let posts = this.props.posts || [];
+        console.log("posts")
+        console.log(posts)
         let sortValue = this.props.sortValue;
-        console.log(sortValue);
-        console.log(posts.length > 0 ? posts[0] : 'no post');
         if (this.props.category) {
             posts = posts.filter(post => post.category === this.props.category)
         }
@@ -53,7 +58,7 @@ class PostSectionComponent extends Component {
                     <div className={"row"}>
                         <div className={"col-8"}>
                             {
-                                posts && posts.map(post => <PostComponent key={post.id} post={post} />)
+                                posts && posts.length>0 && posts.map(post => <PostComponent key={post.id} post={post} />)
                             }
                         </div>
                         <CategoryComponent />

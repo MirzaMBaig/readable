@@ -1,1 +1,13 @@
 /* your styles go here */
+
+.delete-post-button {
+  margin-top: 5%;
+}
+
+.vote-button {
+  margin: 10% 5% 5% 5%;
+}
+
+.icons-size {
+  font-size: 25px;
+}

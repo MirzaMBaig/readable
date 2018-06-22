@@ -4,21 +4,20 @@ import CategoryComponent from "./CategoryComponent";
 import CommentSectionComponent from "./CommentSectionComponent";
 import { Link } from "react-router-dom";
 import NotFoundComponent from './NotFoundComponent';
+import * as actions from "../actions/index";
+import { connect } from "react-redux";
 
 class PostDetailComponent extends Component {
 
     state = {
-        id: '',
-        message: '',
         post: {}
     }
 
     componentDidMount() {
-        let id = this.props.pageProps.match.params.id;
-        BlogsAPI.getPost(id).then(post => {
+
+        BlogsAPI.getPost(this.props.pageProps.match.params.id).then(post => {
             this.setState({ post })
-        }
-        );
+        });
     }
 
     render() {
@@ -57,8 +56,8 @@ class PostDetailComponent extends Component {
                                         </a>
                                             <div className="d-flex align-items-center flex-wrap">
                                                 <div className="date"><i className="icon-clock"></i>{new Date(post.timestamp).toDateString()}</div>
-                                                <div className="comments" onClick={() => this.votePost('upVote', post.id)}><i className="step fi-like size-36"></i>{post.voteScore}</div>
-                                                <div className="comments" onClick={() => this.votePost('downVote', post.id)}><i className="step fi-dislike size-36"></i></div>
+                                            <div className="comments" onClick={() => this.onVotePost('upVote', post.id)}><i className="step fi-like size-36"></i>{post.voteScore}</div>
+                                            <div className="comments" onClick={() => this.onVotePost('downVote', post.id)}><i className="step fi-dislike size-36"></i></div>
                                             </div>
                                         </div>
                                         <div className="post-body">
@@ -74,10 +73,9 @@ class PostDetailComponent extends Component {
                                 {
                                     !post.id && 
                                     <div className={"col"}>
-                                        <h4>You have landed on a different planet, <br />Go Home</h4>
+                                        <NotFoundComponent/>
                                     </div>
                                 }
-
                             </div>
                         </div>
                     </main>
@@ -93,14 +91,23 @@ class PostDetailComponent extends Component {
         setTimeout(
             this.props.history.replace('/'),
             2 * 1000);
-
-
     }
 
-    votePost(vote, id) {
-        BlogsAPI.votePost({ "option": vote }, id).then(post => this.setState({ post }));
+    onVotePost(vote, id) {
+        this.props.votePost(vote, id)
+        this.setState((prevState)=> { 
+            let voteScore = vote === 'upVote' ? prevState.post.voteScore++ : prevState.post.voteScore--;
+            return Object.assign({}, ...prevState, prevState.post, voteScore);
+    });
 
     }
 }
 
-export default PostDetailComponent;
+const mapDispatchToProps = (dispatch) => {
+    return {
+        votePost: (vote, id) => dispatch(actions.votePostOnServer(vote, id)),
+
+    };
+};
+
+export default connect(null, mapDispatchToProps)(PostDetailComponent);

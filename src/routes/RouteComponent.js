@@ -11,10 +11,10 @@ class RouteComponent extends Component {
             <div>
                 <Switch>
                     <Route exact path={`/`}
-                           render={(props) => (<PostSectionComponent/> )}/>
+                        render={(props) => (<PostSectionComponent {...props}/> )}/>
 
                     <Route exact path={`/:category`}
-                           render={(props) => (<PostSectionComponent category={props.match.params.category}/> )}/>
+                        render={(props) => (<PostSectionComponent {...props} category={props.match.params.category}/> )}/>
 
                     <Route exact path={`/delete/posts/:id`}
                            render={(props) => (<PostSectionComponent  {...props} deleteId={props.match.params.id}/> )}/>
